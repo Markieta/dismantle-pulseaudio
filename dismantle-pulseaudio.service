@@ -2,4 +2,7 @@
 Description=Force-disable PulseAudio
 
 [Service]
-ExecStart=/bin/bash -c "pulseaudio='/usr/bin/pulseaudio' && [ -f \"$pulseaudio\" ] && mv \"$pulseaudio\" \"$pulseaudio.bak\""
+ExecStart=/bin/bash -c "pulseaudio=$(which pulseaudio) && [ -f \"$pulseaudio\" ] && mv \"$pulseaudio\" \"$pulseaudio.bak\""
+
+[Install]
+WantedBy=multi-user.target
